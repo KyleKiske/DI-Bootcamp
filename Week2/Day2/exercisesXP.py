@@ -3,9 +3,13 @@
 my_fav_numbers = {5, 7, 42}
 my_fav_numbers.add(34)
 my_fav_numbers.add(75)
+my_fav_list = list(my_fav_numbers)
 print(f"My fav nums: {my_fav_numbers}")
+print(f"My fav list {my_fav_list}")
+my_fav_list.pop()
 my_fav_numbers.remove(75)
 print(f"My fav nums after 75 removal: {my_fav_numbers}")
+print(f"My fav list after {my_fav_list}")
 
 friend_fav_numbers = {5, 33, 22}
 print(f"Friend fav nums: {friend_fav_numbers}")
