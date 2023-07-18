@@ -5,7 +5,6 @@ letter_list = list(word)
 letter_dictionary = dict()
 
 for x in range(len(word)):
-    print(x)
     if (letter_dictionary.get(word[x]) == None):
         letter_dictionary[word[x]] = []
     letter_dictionary[word[x]].append(x)
