@@ -1,7 +1,6 @@
 #Challenge 1
 
 word = input("Please enter a word > ")
-letter_list = list(word)
 letter_dictionary = dict()
 
 for x in range(len(word)):
