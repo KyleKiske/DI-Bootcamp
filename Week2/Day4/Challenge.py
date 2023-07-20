@@ -9,9 +9,8 @@ $a
 
 true_message = ""
 matrix_list = matrix_string.split("\n")
-matrix_column_count = len(matrix_string.split("\n")[0])
 last_is_alpha = True
-for i in range(matrix_column_count):
+for i in range(len(matrix_list[0])):
     for x in matrix_list:
         if x[i].isalpha():
             if not last_is_alpha:

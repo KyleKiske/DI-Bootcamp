@@ -1,21 +1,21 @@
 # Exercise 1
 
-my_fav_numbers = {5, 7, 42}
-my_fav_numbers.add(34)
-my_fav_numbers.add(75)
-my_fav_list = list(my_fav_numbers)
-print(f"My fav nums: {my_fav_numbers}")
-print(f"My fav list {my_fav_list}")
-my_fav_list.pop()
-my_fav_numbers.remove(75)
-print(f"My fav nums after 75 removal: {my_fav_numbers}")
-print(f"My fav list after {my_fav_list}")
+# my_fav_numbers = {5, 7, 42}
+# my_fav_numbers.add(34)
+# my_fav_numbers.add(75)
+# my_fav_list = list(my_fav_numbers)
+# print(f"My fav nums: {my_fav_numbers}")
+# print(f"My fav list {my_fav_list}")
+# my_fav_list.pop()
+# my_fav_numbers.remove(75)
+# print(f"My fav nums after 75 removal: {my_fav_numbers}")
+# print(f"My fav list after {my_fav_list}")
 
-friend_fav_numbers = {5, 33, 22}
-print(f"Friend fav nums: {friend_fav_numbers}")
+# friend_fav_numbers = {5, 33, 22}
+# print(f"Friend fav nums: {friend_fav_numbers}")
 
-combined_set = my_fav_numbers.union(friend_fav_numbers)
-print(f"Combined set {combined_set}")
+# combined_set = my_fav_numbers.union(friend_fav_numbers)
+# print(f"Combined set {combined_set}")
 
 # Exercise 2
 
@@ -90,35 +90,35 @@ print(f"Combined set {combined_set}")
 
 # Exercise 9
 
-# total_ticket_price = 0
-# price_child = 10
-# price_bigger_child = 15
-# family_age = input("Tell me ages of people who will be watching (separate them with space): ")
-# list_family_age = family_age.split()
-# list_family_age = list(map(int, list_family_age))
+total_ticket_price = 0
+price_child = 10
+price_bigger_child = 15
+family_age = input("Tell me ages of people who will be watching (separate them with space): ")
+list_family_age = family_age.split()
+list_family_age = list(map(int, list_family_age))
 
-# for x in list_family_age:
-#     if x < 3:
-#         continue
-#     elif x <= 12:
-#         total_ticket_price += price_child
-#     else:
-#         total_ticket_price += price_bigger_child
+for x in list_family_age:
+    if x < 3:
+        continue
+    elif x <= 12:
+        total_ticket_price += price_child
+    else:
+        total_ticket_price += price_bigger_child
 
-# print(f"Total ticket price for a family is {total_ticket_price}\n")
+print(f"Total ticket price for a family is {total_ticket_price}\n")
 
-# teenagers_names = input("Tell me names of people who (separate them with space): ")
-# list_teenagers_names = teenagers_names.split()
-# list_teenagers_ages = []
-# for x in range(len(list_teenagers_names)):
-#     list_teenagers_ages.append(int(input(f"Tell me age of {list_teenagers_names[x]} :"))) 
+teenagers_names = input("Tell me names of people who (separate them with space): ")
+list_teenagers_names = teenagers_names.split()
+list_teenagers_ages = []
+for x in range(len(list_teenagers_names)):
+    list_teenagers_ages.append(int(input(f"Tell me age of {list_teenagers_names[x]} :"))) 
 
-# final_list = []
-# for x in range(len(list_teenagers_names)):
-#     if (21 >= list_teenagers_ages[x] >= 16):
-#         final_list.append(list_teenagers_names[x])
+final_list = []
+for x in range(len(list_teenagers_names)):
+    if (21 >= list_teenagers_ages[x] and list_teenagers_ages[x]  >= 16):
+        final_list.append(list_teenagers_names[x])
 
-# print(f"List of teens who can attend {final_list}")
+print(f"List of teens who can attend {final_list}")
 
 #Exercise 10
 
