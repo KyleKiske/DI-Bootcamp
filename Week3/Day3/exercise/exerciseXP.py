@@ -5,32 +5,32 @@ from datetime import datetime, timedelta
 from faker import Faker
 #Exercise 1: Currencies
 
-# class Currency:
-#     def __init__(self, currency, amount):
-#         self.currency = currency
-#         self.amount = amount
+class Currency:
+    def __init__(self, currency, amount):
+        self.currency = currency
+        self.amount = amount
 
-#     def __int__(self):
-#         return(self.amount)
-#     def __str__(self):
-#         if (self.amount > 1):
-#             return(f"{self.amount} {self.currency}s")
-#         else:
-#             return(f"{self.amount} {self.currency}")
-#     def __repr__(self) -> str:
-#         return(self.__str__())
-#     def __add__(self, other):
-#         if (type(other) == int):
-#             return (self.amount + other)
-#         elif (type(other) == Currency):
-#             if (other.currency != self.currency):
-#                 raise Exception("Cannot add between Currency type " + self.currency +" and " + other.currency)
-#             else:
-#                 self.amount += other.amount
-#                 return (self)
-#     def __iadd__(self, value):
-#         self.amount += value
-#         return (self)
+    def __int__(self):
+        return(self.amount)
+    def __str__(self):
+        if (self.amount > 1):
+            return(f"{self.amount} {self.currency}s")
+        else:
+            return(f"{self.amount} {self.currency}")
+    def __repr__(self) -> str:
+        return(self.__str__())
+    def __add__(self, other):
+        if (type(other) == int):
+            return (self.amount + other)
+        elif (type(other) == Currency):
+            if (other.currency != self.currency):
+                raise Exception("Cannot add between Currency type " + self.currency +" and " + other.currency)
+            else:
+                self.amount += other.amount
+                return (self)
+    def __iadd__(self, value):
+        self.amount += value
+        return (self)
     
 # c1 = Currency("dollar", 5)
 # c2 = Currency("dollar", 10)
@@ -107,19 +107,19 @@ from faker import Faker
 
 #Exercise 8 : Faker Module
 
-users = list()
+# users = list()
 
-print(users)
-def add_fake_data(users):
-    fake = Faker()
-    name = fake.name()
-    address = fake.address()
-    code = fake.language_code()
-    my_dict = {"name" : name ,"address": address,"code": code}
-    users.append(my_dict)
-    return users
+# print(users)
+# def add_fake_data(users):
+#     fake = Faker()
+#     name = fake.name()
+#     address = fake.address()
+#     code = fake.language_code()
+#     my_dict = {"name" : name ,"address": address,"code": code}
+#     users.append(my_dict)
+#     return users
     
-add_fake_data(users)
-add_fake_data(users)
-for x in users:
-    print(x)
+# add_fake_data(users)
+# add_fake_data(users)
+# for x in users:
+#     print(x)
