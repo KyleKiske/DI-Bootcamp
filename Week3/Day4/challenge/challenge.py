@@ -6,7 +6,7 @@ class Text:
     def __init__(self, text: str) -> None:
         self.text = text
     def freq_of_word(self, word):
-        return(self.text.split().count(word))
+        return(self.text.lower().split().count(word))
     def most_common(self):
         word_count = {}
         most_common_word = ""
@@ -26,10 +26,10 @@ class Text:
         word_set = set(word_list)
         return(list(word_set))
     @classmethod
-    def from_file(self, filename):
+    def from_file(cls, filename):
         with open(filename, "r")  as text_file :
             all_text = text_file.read() #read the file
-        return Text(all_text)
+        return cls(all_text)
     
 example = Text("aaaaa s d f f f d d d")
 print(example.most_common())
