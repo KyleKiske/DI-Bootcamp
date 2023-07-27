@@ -19,7 +19,7 @@ class Circle:
             return(True)
         else:
             return(False)
-    def __ls__(self, other):
+    def __lt__(self, other):
         if (self.radius < other.radius):
             return(True)
         else:

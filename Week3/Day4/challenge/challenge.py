@@ -6,7 +6,7 @@ class Text:
     def __init__(self, text: str) -> None:
         self.text = text
     def freq_of_word(self, word):
-        return(self.text.count(word))
+        return(self.text.split().count(word))
     def most_common(self):
         word_count = {}
         most_common_word = ""
@@ -31,7 +31,7 @@ class Text:
             all_text = text_file.read() #read the file
         return Text(all_text)
     
-example = Text("a s d f f f d d d")
+example = Text("aaaaa s d f f f d d d")
 print(example.most_common())
 print(example.freq_of_word("f"))    
 print(example.unique_words())
@@ -50,8 +50,9 @@ class TextModification(Text):
         with open("stopwords.txt", "r")  as text_file :
             stopwords = text_file.read() #read the file
         word_list = self.text.split()
+        stop_set = set(stopwords.split(" "))
         for w in word_list:
-            if w.lower() not in stopwords:
+            if w.lower() not in stop_set:
                 new_text += (" " + w)
         return(new_text)
     
