@@ -1,20 +1,5 @@
 from menu_manager import MenuManager
 from menu_item import MenuItem
-import psycopg2
-
-HOSTNAME = 'localhost'
-USERNAME = 'postgres'
-PASSWORD = 'postgres'
-DATABASE = 'Restaurant'
-
-connection = psycopg2.connect(
-    host = HOSTNAME,
-    user = USERNAME,
-    password = PASSWORD,
-    database = DATABASE
-)
-
-cursor = connection.cursor()
 
 menu_manager = MenuManager()
 def show_user_menu():
@@ -75,6 +60,3 @@ while True:
     loop = show_user_menu()
     if not loop:
         break
-
-
-connection.close()

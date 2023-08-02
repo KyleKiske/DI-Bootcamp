@@ -5,52 +5,44 @@ USERNAME = 'postgres'
 PASSWORD = 'postgres'
 DATABASE = 'Restaurant'
 
-connection = psycopg2.connect(
-    host = HOSTNAME,
-    user = USERNAME,
-    password = PASSWORD,
-    database = DATABASE
-)
+def manage_connection(query, type) :
+    connection = None
+    try : 
+        connection = psycopg2.connect(
+            database="Restaurant", 
+            user='postgres',
+            password='postgres',
+            host='localhost', 
+            port='5432'
+        )
 
-cursor = connection.cursor()
+        with connection:
+            with connection.cursor() as cursor: 
+                cursor.execute(query)
+                if type == "insert" :
+                    connection.commit()
+                elif type == "select" :
+                    return cursor.fetchall()
+    except Exception as e :
+        print(e)
+    finally :
+        if connection != None:
+            connection.close() 
 
 class MenuItem:
     def __init__(self, name, price) -> None:
         self.name = name
         self.price = price
     def save(self):
-        try:
-            with connection:
-                with connection.cursor() as curs:
-                    query = f"""INSERT INTO menu_items(item_name, item_price)
-                            VALUES ('{self.name}', {self.price})"""
-                    curs.execute(query)
-                    connection.commit()
-        except Exception as err:
-            print(err)
+        query = f"""INSERT INTO menu_items(item_name, item_price)
+                VALUES ('{self.name}', {self.price})"""
+        manage_connection(query, "insert")
     def update(self, new_name, new_price):
-        try:
-            with connection:
-                with connection.cursor() as curs:
-                    query = f"""UPDATE menu_items
-                            SET item_name = '{new_name}', item_price = {new_price}
-                            WHERE item_name = '{self.name}' AND item_price = {self.price}"""
-                    curs.execute(query)
-                    connection.commit()
-        except Exception as err:
-            print(err)
+        query = f"""UPDATE menu_items
+                SET item_name = '{new_name}', item_price = {new_price}
+                WHERE item_name = '{self.name}' AND item_price = {self.price}"""
+        manage_connection(query, "insert")
     def delete(self):
-        try:
-            with connection:
-                with connection.cursor() as curs:
-                    query = f"""DELETE FROM menu_items
-                            WHERE item_name = '{self.name}' AND item_price = {self.price}"""
-                    curs.execute(query)
-                    connection.commit()
-        except Exception as err:
-            print(err)
-    
-# item = MenuItem('Burger', 35)
-# item.save()
-
-# connection.close()
+        query = f"""DELETE FROM menu_items
+                WHERE item_name = '{self.name}' AND item_price = {self.price}"""
+        manage_connection(query, "insert")
