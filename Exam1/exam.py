@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 # Python Basics
 
 # Data Types
@@ -143,9 +146,12 @@ tesla.battery_capacity = -500
 # Implement methods to deposit, withdraw, and view the balance.
 # Include a class method to track accounts created and a static method for a bank policy message. Ensure the balance is non-negative.
 class BankAccount:
+    accounts = 0
+    _bank_policy = "THIS IS A BANK POLICY, DO NOT DO ANYTHING AGAINST IT."
     def __init__(self, balance: float, account_holder: str) -> None:
         self._balance = balance
         self._account_holder = account_holder
+        BankAccount.accounts +=1
 
     def deposit(self, amount):
         self._balance += amount
@@ -159,3 +165,42 @@ class BankAccount:
     @property
     def balance(self):
         return self._balance
+    
+    @classmethod
+    def accounts_created(cls):
+        print(BankAccount.accounts)
+
+    @staticmethod
+    def print_policy():
+        print(BankAccount._bank_policy)
+
+    
+dieter = BankAccount(345.6, "Dieter")
+
+johan = BankAccount(10000.0, "Johan Liebert")
+
+print("Balance Dieter = " + str(dieter.balance))
+print("Balance Johan = " + str(johan.balance))
+
+dieter.withdraw(400)
+
+johan.accounts_created()
+johan.print_policy()
+BankAccount.print_policy()
+BankAccount.accounts_created()
+
+# Create a numpy array of shape (3,3) filled with integers from 1 to 9 using arange().
+
+array = np.arange(1,10).reshape(3,3)
+print(array)
+
+df = pd.DataFrame({'A': [1, 'apple', 3, 4, 'banana'], 'B': [5, 6, 7, 8, 9]})
+
+# Replace non-numeric values in column “A” with the mean of numeric values. Plot a histogram of the “A” column using matplotlib.
+# replace_mean = df["A"].mean()
+
+df['A'] = pd.to_numeric(df["A"], errors="coerce")
+mean_value = (df["A"].mean())
+df["A"] = df["A"].fillna(mean_value)
+
+print(df["A"])
