@@ -4,13 +4,13 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from .models import Department, Employee, Project, Task
-from .serializers import DepartmentSerializer, EmployeeSerializer, ProjectSerializer, TaskSerializer
-
+from .serializers import DepartmentSerializer, EmployeeSerializer, ProjectSerializer, TaskSerializer, DepartmentHyperlinkSerializer, TaskHyperlinkSerializer, EmployeeHyperlinkSerializer
+from .permissions import IsDepartmentAdmin
 # Create your views here.
 
 class DepartmentAPIView(APIView):
 
-    permission_classes = (AllowAny, )
+    permission_classes = (IsDepartmentAdmin, )
 
     def get(self,request, pk=None):
         if pk is not None:
@@ -18,11 +18,11 @@ class DepartmentAPIView(APIView):
             serializer = DepartmentSerializer(department)
             return Response(serializer.data)
         queryset = Department.objects.all()
-        serializer = DepartmentSerializer(queryset, many=True)
+        serializer = DepartmentHyperlinkSerializer(queryset, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = DepartmentSerializer(data=request.data)
+        serializer = DepartmentHyperlinkSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -49,7 +49,7 @@ class DepartmentAPIView(APIView):
 
 class EmployeeAPIView(APIView):
 
-    permission_classes = (AllowAny, )
+    permission_classes = (IsDepartmentAdmin, )
 
     def get(self,request, pk=None):
         if pk is not None:
@@ -58,11 +58,11 @@ class EmployeeAPIView(APIView):
             return Response(serializer.data)
         
         queryset = Employee.objects.all()
-        serializer = EmployeeSerializer(queryset, many=True)
+        serializer = EmployeeHyperlinkSerializer(queryset, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = EmployeeSerializer(data=request.data)
+        serializer = EmployeeHyperlinkSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -89,7 +89,7 @@ class EmployeeAPIView(APIView):
 
 class ProjectAPIView(APIView):
 
-    permission_classes = (AllowAny, )
+    permission_classes = (IsDepartmentAdmin, )
 
     def get(self, request, pk=None):
         if pk is not None:
@@ -129,7 +129,7 @@ class ProjectAPIView(APIView):
 
 class TaskAPIView(APIView):
 
-    permission_classes = (AllowAny, )
+    permission_classes = (IsDepartmentAdmin, )
 
     def get(self, request, pk=None):
         if pk is not None:
@@ -138,11 +138,11 @@ class TaskAPIView(APIView):
             return Response(serializer.data)
 
         tasks = Task.objects.all()
-        serializer = TaskSerializer(tasks, many=True)
+        serializer = TaskHyperlinkSerializer(tasks, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = TaskSerializer(data=request.data)
+        serializer = TaskHyperlinkSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
