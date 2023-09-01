@@ -1,0 +1,116 @@
+body {
+    background-color: black;
+  
+    background-image: url("https://cdn.britannica.com/83/189283-050-DF7E0E75/Banknotes-world.jpg");
+  
+    font-family: 'Helvetica Neue';
+  
+    color: black;
+    text-align: center;
+  }
+  
+  .wrapper {
+    width: 600px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  
+  .logo {
+    width: 400px;
+    height: 300px;
+  
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1200px-Star_Wars_Logo.svg.png") center center no-repeat;
+  
+    background-size: contain;
+    width: 1000px;
+    height: 300px;
+    margin:  0 auto;
+    margin-top: -20px;
+  }
+  
+  
+  .info-container{
+  
+    border: 3px solid yellow;
+    border-radius: 15px;
+  
+    width: 600px;
+    height: 250px;
+  
+    margin: 0 auto;
+  
+    margin-top: -25px;
+  
+  }
+  
+  
+  #button{
+      margin-top: 20px;
+  
+      border: 3px solid black;
+      border-radius: 10px;
+  
+      width: 180px;
+      height: 30px;
+  
+      font-weight: bold;
+      font-size: 20px;
+  
+      cursor: pointer;
+  }
+  
+  
+  button:focus {
+  
+      outline:0;
+  }
+  
+  #name{
+      color: white;
+  
+      font-size: 30px;
+      
+  }
+  
+  #height{
+      color: white;
+      /*font-weight: bold;*/
+  
+      font-size: 20px;
+  }
+  
+  #gender{
+      color: white;
+      /*font-weight: bold;*/
+  
+      font-size: 20px;
+  }
+  
+  #birth-year{
+      color: white;
+      /*font-weight: bold;*/
+  
+      font-size: 20px;
+  }
+  
+  #home-world{
+      color: white;
+      /*font-weight: bold;*/
+  
+      font-size: 20px;
+  }
+  
+  
+  p{
+      color: white;
+      font-weight: bold;
+  
+      font-size: 30px;
+  }
+  
+#result {
+    font-size: 2rem;
+}
+  
+  

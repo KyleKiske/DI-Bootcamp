@@ -1,0 +1,46 @@
+body {
+    background-image: url(./circuit-pattern.png);
+    background-color: #6556CD!important;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(3, 30vw);
+    justify-content: center;
+    column-gap: 0;
+    row-gap: 50px;
+}
+
+#search {
+    width: 50%;
+}
+
+.navcolor {
+    background-color: #6adf82;
+}
+
+.cards {
+    background-image: url(./card-pattern.png);
+    width: 80%;
+    background-color: #4FC1C5;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Borgen', sans-serif;
+    margin-bottom: 4px;
+}
+
+.mail {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#title {
+    font-family: 'SEGA LOGO FONT', sans-serif;
+    font-size: 2rem;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
