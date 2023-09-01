@@ -1,7 +1,13 @@
 const button = document.getElementById("button");
 button.addEventListener('click', getSomeoneRandom);
+const container = document.querySelector('.info-container');
 
 async function getSomeoneRandom() {
+  container.innerHTML = `
+  <div class="fa-4x">
+  <i id='loader' class="fa-solid fa-spinner fa-spin-pulse fa-spin-reverse"></i>
+  </div>
+  <span>Loading...</span>`;
   let randomNumber = Math.floor(Math.random() * (83-1) + 1);
   try {
     const response = await fetch(`https://www.swapi.tech/api/people/${randomNumber}`);
@@ -20,6 +26,7 @@ async function getSomeoneRandom() {
 
 async function displayInfo(result) {
   let worldName = "";
+  container.innerHTML = ``;
   try {
     const response = await fetch(result.properties.homeworld);
     if (!response.ok) {
@@ -31,14 +38,10 @@ async function displayInfo(result) {
   } catch (err) {
       console.log("IN THE CATCH ", err);
   }
-  const name = document.getElementById("name");
-  name.innerText = result.properties.name;
-  const height = document.getElementById("height");
-  height.innerText = `Height: ${result.properties.height}`;
-  const gender = document.getElementById("gender");
-  gender.innerText = `Gender: ${result.properties.gender}`;
-  const birthYear = document.getElementById("birth-year");
-  birthYear.innerText = `Birth Year: ${result.properties.birth_year}`;
-  const homeWorld = document.getElementById("home-world");
-  homeWorld.innerText = `Home World: ${worldName}`;
+  container.innerHTML = `
+  <h1 id="name">${result.properties.name}</h1>
+  <p id="height">Height: ${result.properties.height}</p>
+  <p id="gender">Gender: ${result.properties.gender}</p>
+  <p id="birth-year">Birth Year: ${result.properties.birth_year}</p>
+  <p id="home-world">Home World: ${worldName}</p>`;
 }
